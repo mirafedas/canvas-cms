@@ -1,2 +1,11 @@
 @import "vars";
 @import "normalize";
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
