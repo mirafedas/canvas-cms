@@ -4,8 +4,10 @@
       Logo
     </header>
     <main>
+      Projects
     </main>
     <footer>
+      Contacts
     </footer>
   </div>
 </template>
