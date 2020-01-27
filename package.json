@@ -1,0 +1,31 @@
+{
+  "name": "new-project",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Nuxt.js project",
+  "author": "mfedas@griddynamics.com",
+  "scripts": {
+    "build": "nuxt build",
+    "lint": "vue-cli-service lint",
+    "dev": "nuxt",
+    "generate": "nuxt generate",
+    "precommit": "npm run lint",
+    "start": "nuxt start"
+  },
+  "dependencies": {
+    "nuxt": "^2.0.0"
+  },
+  "devDependencies": {
+    "@nuxtjs/eslint-config": "^2.0.0",
+    "@vue/cli-plugin-eslint": "^4.1.2",
+    "@vue/eslint-config-airbnb": "^4.0.1",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^2.2.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-vue": "^5.2.3",
+    "prettier": "^1.19.1"
+  }
+}
