@@ -1,25 +1,25 @@
 <template>
   <div class="main-wrapper">
     <div class="main-content">
-      <header>
-        Header
-      </header>
+      <Header />
       <main>
         <StartPage />
       </main>
-      <footer>
-        Footer
-      </footer>
+      <Footer />
     </div>
   </div>
 </template>
 
 <script>
 import StartPage from '../components/StartPage'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 export default {
   components: {
-    StartPage
+    StartPage,
+    Header,
+    Footer
   }
 }
 </script>
@@ -57,10 +57,5 @@ main {
   align-items: center;
   height: 100%;
   padding: 4em;
-}
-
-footer {
-  display: flex;
-  justify-self: flex-end;
 }
 </style>

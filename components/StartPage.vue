@@ -2,9 +2,11 @@
   <form ref="projectNameAndDescription">
     <input type="text" placeholder="Project name" v-model="projectName" />
     <input type="text" placeholder="Project description" v-model="projectDesc" />
-    <button @click.prevent="createProject">
-      Create project
-    </button>
+    <nuxt-link to="/projects">
+      <button @click="createProject">
+        Create project
+      </button>
+    </nuxt-link>
   </form>
 </template>
 
@@ -18,8 +20,13 @@ export default {
   },
   methods: {
     createProject () {
-      // eslint-disable-next-line no-console
-      console.log(this.projectDesc, this.projectName)
+      const newProject = {
+        id: Date.now(),
+        name: this.projectName,
+        description: this.projectDesc,
+        author: 'Old Sad Panda'
+      }
+      this.$store.commit('addProject', newProject)
     }
   }
 }
