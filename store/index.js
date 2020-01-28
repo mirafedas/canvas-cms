@@ -3,7 +3,7 @@ export const state = () => ({
     {
       id: 365674,
       name: 'Project 1',
-      description: 'Raccoons are awesome',
+      description: 'Raccoons are awesome awesome awesome awesome awesome awesome awesome awesome awesome',
       author: 'Old Sad Panda'
     },
     {

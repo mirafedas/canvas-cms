@@ -23,23 +23,32 @@ export default {
   margin: 10px;
   padding: 10px;
   min-width: 150px;
-  min-height: 230px;
+  height: 230px;
+  width: 230px;
   border: 3px solid grey;
   border-radius: 10px;
   background-color: lightgreen
 }
 
-h2 {
-  margin-bottom: 5px;
-}
-
 .author {
-  /* margin: 10px 0; */
   font-size: 12px;
 }
 
 .description {
   margin: 15px 0;
+  max-height: 20px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
+button {
+  height: 30px;
+  margin: 5px 0;
+  text-transform: uppercase;
+}
+
+button:hover {
+  color: orange;
+}
 </style>
