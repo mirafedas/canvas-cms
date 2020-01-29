@@ -21,11 +21,6 @@ export default {
     Header,
     Footer
   },
-  data: () => {
-    return {
-      // projects: []
-    }
-  },
   computed: {
     projects () {
       return this.$store.state.projects

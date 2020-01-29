@@ -18,7 +18,8 @@ export const state = () => ({
       description: 'Lemurs are awesome',
       author: 'Old Sad Panda'
     }
-  ]
+  ],
+  selectedProject: {}
 })
 
 export const mutations = {
@@ -41,6 +42,12 @@ export const mutations = {
       })
       console.log('state.projects: ', state.projects)
     }
+  },
+  changeSelectedProject (state, payload) {
+    if (typeof payload === 'object' && payload !== null) {
+      state.selectedProject = payload
+    }
+    console.log(state.selectedProject)
   }
 }
 

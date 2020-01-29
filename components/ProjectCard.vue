@@ -6,12 +6,16 @@
     <button @click="duplicate">
       Duplicate
     </button>
-    <button>
-      Edit
-    </button>
-    <button>
-      Preview
-    </button>
+    <nuxt-link to="builder">
+      <button @click="edit">
+        Edit
+      </button>
+    </nuxt-link>
+    <nuxt-link to="preview">
+      <button>
+        Preview
+      </button>
+    </nuxt-link>
   </div>
 </template>
 
@@ -21,6 +25,9 @@ export default {
   methods: {
     duplicate () {
       this.$store.commit('duplicateProject', this.project.id)
+    },
+    edit () {
+      this.$store.commit('changeSelectedProject', this.project)
     }
   }
 }
@@ -61,6 +68,7 @@ export default {
 
 button {
   height: 30px;
+  width: 100%;
   margin: 5px 0;
   text-transform: uppercase;
 }
