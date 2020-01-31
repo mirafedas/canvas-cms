@@ -12,7 +12,7 @@
       </button>
     </nuxt-link>
     <nuxt-link to="preview">
-      <button>
+      <button @click="edit">
         Preview
       </button>
     </nuxt-link>
@@ -46,6 +46,8 @@ export default {
   border: 3px solid grey;
   border-radius: 10px;
   background-color: lightgreen;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease 0s;
 }
 
 .author {
@@ -70,10 +72,18 @@ button {
   height: 30px;
   width: 100%;
   margin: 5px 0;
+  border-radius: 10px;
+  border: 1px solid black;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease 0s;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
   text-transform: uppercase;
 }
 
 button:hover {
+  border: 1px solid orange;
   color: orange;
 }
 </style>

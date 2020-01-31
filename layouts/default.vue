@@ -1,8 +1,24 @@
 <template>
   <div class="wrapper">
-    <nuxt />
+    <Header />
+    <main>
+      <nuxt />
+    </main>
+    <Footer />
   </div>
 </template>
+
+<script>
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+
+export default {
+  components: {
+    Header,
+    Footer
+  }
+}
+</script>
 
 <style>
 html {
@@ -32,5 +48,9 @@ html, body, #__nuxt, #__layout {
 
 .wrapper {
   height: 100%;
+}
+
+main {
+  height: calc(100% - 50px);
 }
 </style>
