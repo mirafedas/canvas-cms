@@ -8,14 +8,7 @@
       <span class="description">{{ selectedProject.description || "Pandas are awesome" }}</span>
     </div>
     <div class="component-wrapper">
-      <Grid
-        :width="selectedProject.width"
-        :height="selectedProject.height"
-        :rows="selectedProject.rows"
-        :columns="selectedProject.columns"
-        :grid-gap="selectedProject.gridGap"
-        :content="selectedProject.content"
-      />
+      <Grid :selected-project="selectedProject" />
     </div>
   </div>
 </template>
@@ -30,6 +23,12 @@ export default {
   computed: {
     selectedProject () {
       return this.$store.state.selectedProject
+    }
+  },
+  mounted () {
+    if (!this.selectedProject.content) {
+      this.selectedProject.content = []
+      console.log(this.selectedProject)
     }
   },
   methods: {

@@ -2,15 +2,15 @@
   <div
     class="grid-wrapper"
     :style="{
-      'grid-template-columns': `repeat(${columns}, ${width})`,
-      'grid-template-rows': `repeat(${rows}, ${height})`,
-      'grid-gap': `${gridGap}`,
+      'grid-template-columns': `repeat(${selectedProject.columns}, ${selectedProject.width})`,
+      'grid-template-rows': `repeat(${selectedProject.rows}, ${selectedProject.height})`,
+      'grid-gap': `${selectedProject.gridGap}`
     }"
   >
     <GridItem
-      v-for="index in getItemsNumber()"
+      v-for="index in itemsNumber"
       :key="index"
-      :item="content[index-1]"
+      :item="selectedProject.content[index - 1] || {}"
     />
   </div>
 </template>
@@ -22,36 +22,15 @@ export default {
   components: {
     GridItem
   },
-  props: {
-    width: {
-      type: String,
-      default: '100px'
+  computed: {
+    selectedProject () {
+      return this.$store.state.selectedProject
     },
-    height: {
-      type: String,
-      default: '100px'
-    },
-    columns: {
-      type: String,
-      default: '4'
-    },
-    rows: {
-      type: String,
-      default: '4'
-    },
-    gridGap: {
-      type: String,
-      default: '0px'
-    },
-    content: {
-      type: Object,
-      default: () => {}
-    }
-  },
-  methods: {
-    getItemsNumber () {
-      console.log(this.content)
-      return this.columns * this.rows
+    itemsNumber () {
+      if (this.selectedProject.columns && this.selectedProject.rows) {
+        return this.selectedProject.columns * this.selectedProject.rows
+      }
+      return 1
     }
   }
 }

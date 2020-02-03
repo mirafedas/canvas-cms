@@ -52,6 +52,6 @@ html, body, #__nuxt, #__layout {
 }
 
 main {
-  height: calc(100% - 50px);
+  height: calc(100% - 150px);
 }
 </style>

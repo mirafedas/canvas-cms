@@ -28,11 +28,25 @@
 export default {
   props: {
     item: {
-      type: Array,
-      default: () => []
+      type: Object,
+      default () {
+        return {
+          row: null,
+          column: null,
+          image: '',
+          text: [
+            {
+              string: '',
+              justify: 'center',
+              align: 'center',
+              color: 'black',
+              fontSize: '14px'
+            }
+          ]
+        }
+      }
     }
   }
-
 }
 </script>
 
@@ -42,5 +56,4 @@ export default {
   padding: 10px;
   background-size: cover;
 }
-
 </style>

@@ -86,7 +86,7 @@ aside {
 }
 
 main {
-  height: 100%;
+  height: calc(100% - 150px);
 }
 
 .main-content-wrapper {

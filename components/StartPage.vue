@@ -42,7 +42,29 @@ export default {
           id: Date.now(),
           name: this.projectName,
           description: this.projectDesc,
-          author: 'Old Sad Panda'
+          author: 'Old Sad Panda',
+          type: 'block',
+          rows: '1',
+          columns: '1',
+          height: '100px',
+          width: '100px',
+          gridGap: '5px',
+          content: [
+            {
+              row: 1,
+              column: 1,
+              image: 'https://i.pinimg.com/originals/b6/c3/ab/b6c3ab5c990a528654574329087701cf.jpg',
+              text: [
+                {
+                  string: 'Default text',
+                  justify: 'center',
+                  align: 'center',
+                  color: 'black',
+                  fontSize: '14px'
+                }
+              ]
+            }
+          ]
         }
 
         this.$store.commit('addProject', newProject)
