@@ -1,6 +1,6 @@
 <template>
   <div class="builder-wrapper">
-    <header>
+    <div class="nav-top">
       <div class="project-info-wrapper">
         <button>&#8249; Projects</button>
         <div class="project-info">
@@ -14,30 +14,42 @@
           <button>Preview</button>
         </nuxt-link>
       </div>
-    </header>
+    </div>
     <div class="main-content-wrapper">
       <aside>
         <button>Add section</button>
       </aside>
-      <main>Main</main>
+      <div class="main">
+        <div class="grid-wrapper">
+          <button class="grid-item"></button>
+          <button class="grid-item"></button>
+          <button class="grid-item"></button>
+          <button class="grid-item"></button>
+          <button class="grid-item"></button>
+          <button class="grid-item"></button>
+          <button class="grid-item"></button>
+          <button class="grid-item"></button>
+        </div>
+      </div>
     </div>
-    <footer>
+    <div class="bottom-board">
       <div>Banner</div>
       <div>Slideshow</div>
       <div>Carousel</div>
       <div>Other...</div>
-    </footer>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
+  data: () => {
+    return {
+      gridItems: []
+    }
+  },
   computed: {
     selectedProject () {
-      // if (!this.$store.state.selectedProject) {
-      //   return this.$store.projects[0]
-      // }
-
       return this.$store.state.selectedProject
     }
   }
@@ -45,6 +57,10 @@ export default {
 </script>
 
 <style scoped>
+button {
+  margin: 0 10px;
+}
+
 .builder-wrapper {
   display: flex;
   flex-direction: column;
@@ -52,7 +68,7 @@ export default {
   height: 100%;
 }
 
-header {
+.nav-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -62,9 +78,20 @@ header {
   background-color: aquamarine;
 }
 
-button {
-  height: 30px;
-  margin: 0 10px;
+.grid-wrapper {
+  display: grid;
+}
+
+.grid-item {
+  min-width: 100px;
+  min-height: 100px;
+  background-color: grey;
+  border: 1px dashed black;
+  border-radius: 0;
+}
+
+.buttons-wrapper {
+  display: flex;
 }
 
 .project-info-wrapper {
@@ -80,13 +107,19 @@ button {
 }
 
 aside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 200px;
   height: 100%;
+  padding: 20px;
   background-color: lightgray;
 }
 
-main {
-  height: calc(100% - 150px);
+.main {
+  height: 100%;
+  width: 100%;
+  padding: 20px;
 }
 
 .main-content-wrapper {
@@ -94,9 +127,11 @@ main {
   height: 100%;
 }
 
-footer {
+.bottom-board {
+  display: flex;
   width: 100%;
   height: 100px;
+  padding: 20px;
   background-color: aquamarine;
 }
 </style>
