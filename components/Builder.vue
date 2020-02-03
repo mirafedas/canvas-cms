@@ -20,16 +20,7 @@
         <button>Add section</button>
       </aside>
       <div class="main">
-        <div class="grid-wrapper">
-          <button class="grid-item"></button>
-          <button class="grid-item"></button>
-          <button class="grid-item"></button>
-          <button class="grid-item"></button>
-          <button class="grid-item"></button>
-          <button class="grid-item"></button>
-          <button class="grid-item"></button>
-          <button class="grid-item"></button>
-        </div>
+        <Editable />
       </div>
     </div>
     <div class="bottom-board">
@@ -42,16 +33,27 @@
 </template>
 
 <script>
+import Editable from '../components/Editable'
+
 export default {
+  components: {
+    Editable
+  },
   data: () => {
     return {
       gridItems: []
     }
   },
   computed: {
+    elements () {
+      return this.$store.state.selectedProject.elements
+    },
     selectedProject () {
       return this.$store.state.selectedProject
     }
+  },
+  mounted () {
+    console.log(this.$store.state.selectedProject.elements)
   }
 }
 </script>
@@ -79,7 +81,7 @@ button {
 }
 
 .grid-wrapper {
-  display: grid;
+  /* display: grid; */
 }
 
 .grid-item {

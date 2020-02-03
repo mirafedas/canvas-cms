@@ -26,8 +26,8 @@ export default {
     }
   },
   mounted () {
-    if (!this.selectedProject.content) {
-      this.selectedProject.content = []
+    if (!this.selectedProject.elements[0].content) {
+      this.selectedProject.elements[0].content = []
       console.log(this.selectedProject)
     }
   },

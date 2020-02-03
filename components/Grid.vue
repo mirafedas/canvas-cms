@@ -2,15 +2,15 @@
   <div
     class="grid-wrapper"
     :style="{
-      'grid-template-columns': `repeat(${selectedProject.columns}, ${selectedProject.width})`,
-      'grid-template-rows': `repeat(${selectedProject.rows}, ${selectedProject.height})`,
-      'grid-gap': `${selectedProject.gridGap}`
+      'grid-template-columns': `repeat(${selectedProject.elements[0].columns}, ${selectedProject.elements[0].width})`,
+      'grid-template-rows': `repeat(${selectedProject.elements[0].rows}, ${selectedProject.elements[0].height})`,
+      'grid-gap': `${selectedProject.elements[0].gridGap}`
     }"
   >
     <GridItem
       v-for="index in itemsNumber"
       :key="index"
-      :item="selectedProject.content[index - 1] || {}"
+      :item="selectedProject.elements[0].content[index - 1] || {}"
     />
   </div>
 </template>
@@ -27,8 +27,8 @@ export default {
       return this.$store.state.selectedProject
     },
     itemsNumber () {
-      if (this.selectedProject.columns && this.selectedProject.rows) {
-        return this.selectedProject.columns * this.selectedProject.rows
+      if (this.selectedProject.elements[0].columns && this.selectedProject.elements[0].rows) {
+        return this.selectedProject.elements[0].columns * this.selectedProject.elements[0].rows
       }
       return 1
     }
