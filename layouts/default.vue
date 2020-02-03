@@ -47,6 +47,7 @@ html, body, #__nuxt, #__layout {
 }
 
 .wrapper {
+  font-family: 'Titillium Web';
   height: 100%;
 }
 

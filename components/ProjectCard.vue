@@ -63,6 +63,7 @@ export default {
 }
 
 .name {
+  margin-bottom: 10px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

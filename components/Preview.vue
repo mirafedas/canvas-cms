@@ -48,6 +48,7 @@ export default {
   display: flex;
   height: 100%;
 }
+
 .info-wrapper {
   display: flex;
   flex-direction: column;
@@ -70,5 +71,4 @@ export default {
   width: 100%;
   padding: 20px;
 }
-
 </style>

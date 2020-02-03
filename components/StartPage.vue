@@ -1,13 +1,20 @@
 <template>
   <form ref="projectNameAndDescription">
     <img src="../assets/icons/idea.png" alt="Light bulb icon">
+    <p v-if="errors.length">
+      <ul>
+        <li v-for="error in errors" :key="error" class="errors-list-item">
+          {{ error }}
+        </li>
+      </ul>
+    </p>
     <input v-model="projectName" type="text" placeholder="Project name">
     <input v-model="projectDesc" type="text" placeholder="Project description">
-    <nuxt-link to="/projects">
-      <button class="start-btn" @click="createProject">
-        Create project
-      </button>
-    </nuxt-link>
+    <!-- <nuxt-link to="/projects"> -->
+    <button class="start-btn" @click.prevent="createProject">
+      Create project
+    </button>
+    <!-- </nuxt-link> -->
   </form>
 </template>
 
@@ -15,19 +22,32 @@
 export default {
   data: () => {
     return {
+      errors: [],
       projectName: '',
       projectDesc: ''
     }
   },
   methods: {
+    hideErrorMessage () {
+      setTimeout(() => { this.errors = [] }, 5000)
+    },
     createProject () {
-      const newProject = {
-        id: Date.now(),
-        name: this.projectName,
-        description: this.projectDesc,
-        author: 'Old Sad Panda'
+      if (!this.projectName.length || !this.projectDesc.length) {
+        if (!this.errors.length) {
+          this.errors.push('Please fill in all fields properly!')
+          this.hideErrorMessage()
+        }
+      } else {
+        const newProject = {
+          id: Date.now(),
+          name: this.projectName,
+          description: this.projectDesc,
+          author: 'Old Sad Panda'
+        }
+
+        this.$store.commit('addProject', newProject)
+        this.$router.push('projects')
       }
-      this.$store.commit('addProject', newProject)
     }
   }
 }
@@ -49,6 +69,7 @@ input {
   margin: 10px 0;
   padding: 5px;
   border: 1px solid green;
+  font-size: 14px;
 }
 
 button {
@@ -71,5 +92,12 @@ button {
     border: 1px solid orange;
     color: orange;
   }
+}
+
+.errors-list-item {
+  font-size: 14px;
+  background-color: transparent;
+  color: red;
+  list-style: none;
 }
 </style>
