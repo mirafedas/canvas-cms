@@ -20,7 +20,38 @@
         <button>Add section</button>
       </aside>
       <div class="main">
-        <Editable />
+        <ul
+          class="element-container"
+          :style="{
+            height: containerHeight,
+            maxWidth: containerWidth
+          }"
+        >
+          <draggable
+            :list="items"
+            class="dragArea"
+            :options="{handle:'.handle'}"
+          >
+            <li
+              v-for="item in gridItems"
+              :key="item"
+              class="column"
+              :style="{
+                width: width,
+                height: height
+              }"
+            >
+              <draggable
+                v-model="gridItems"
+                :list="gridItems"
+                @start="drag=true"
+                @end="drag=false"
+              >
+                <Editable :item="item" />
+              </draggable>
+            </li>
+          </draggable>
+        </ul>
       </div>
     </div>
     <div class="bottom-board">
@@ -33,15 +64,148 @@
 </template>
 
 <script>
+import draggable from 'vuedraggable'
 import Editable from '../components/Editable'
 
 export default {
   components: {
-    Editable
+    Editable,
+    draggable
   },
   data: () => {
     return {
-      gridItems: []
+      width: '200px',
+      height: '200px',
+      rows: 3,
+      columns: 3,
+      gridItems: [
+        {
+          row: 1,
+          column: 1,
+          image: 'https://media.treehugger.com/assets/images/2017/01/cob-house-geodesic-dome-hjertefolgers-10.jpg.860x0_q70_crop-scale.jpg',
+          text: [
+            {
+              string: 'Test1',
+              justify: 'flex-end',
+              align: 'flex-start',
+              color: 'orange',
+              fontSize: '20px'
+            },
+            {
+              string: 'Test2',
+              justify: 'center',
+              align: 'flex-end',
+              color: 'black',
+              fontSize: '14px'
+            }
+          ]
+        },
+        {
+          row: 1,
+          column: 1,
+          image: 'https://media.treehugger.com/assets/images/2017/01/cob-house-geodesic-dome-hjertefolgers-10.jpg.860x0_q70_crop-scale.jpg',
+          text: [
+            {
+              string: 'Test1',
+              justify: 'flex-end',
+              align: 'flex-start',
+              color: 'orange',
+              fontSize: '20px'
+            },
+            {
+              string: 'Test2',
+              justify: 'center',
+              align: 'flex-end',
+              color: 'black',
+              fontSize: '14px'
+            }
+          ]
+        },
+        {
+          row: 1,
+          column: 1,
+          image: 'https://media.treehugger.com/assets/images/2017/01/cob-house-geodesic-dome-hjertefolgers-10.jpg.860x0_q70_crop-scale.jpg',
+          text: [
+            {
+              string: 'Test1',
+              justify: 'flex-end',
+              align: 'flex-start',
+              color: 'orange',
+              fontSize: '20px'
+            },
+            {
+              string: 'Test2',
+              justify: 'center',
+              align: 'flex-end',
+              color: 'black',
+              fontSize: '14px'
+            }
+          ]
+        },
+        {
+          row: 1,
+          column: 1,
+          image: 'https://media.treehugger.com/assets/images/2017/01/cob-house-geodesic-dome-hjertefolgers-10.jpg.860x0_q70_crop-scale.jpg',
+          text: [
+            {
+              string: 'Test1',
+              justify: 'flex-end',
+              align: 'flex-start',
+              color: 'orange',
+              fontSize: '20px'
+            },
+            {
+              string: 'Test2',
+              justify: 'center',
+              align: 'flex-end',
+              color: 'black',
+              fontSize: '14px'
+            }
+          ]
+        },
+        {
+          row: 1,
+          column: 1,
+          image: 'https://media.treehugger.com/assets/images/2017/01/cob-house-geodesic-dome-hjertefolgers-10.jpg.860x0_q70_crop-scale.jpg',
+          text: [
+            {
+              string: 'Test1',
+              justify: 'flex-end',
+              align: 'flex-start',
+              color: 'orange',
+              fontSize: '20px'
+            },
+            {
+              string: 'Test2',
+              justify: 'center',
+              align: 'flex-end',
+              color: 'black',
+              fontSize: '14px'
+            }
+          ]
+        },
+        {
+          row: 1,
+          column: 1,
+          image: 'https://media.treehugger.com/assets/images/2017/01/cob-house-geodesic-dome-hjertefolgers-10.jpg.860x0_q70_crop-scale.jpg',
+          text: [
+            {
+              string: 'Test1',
+              justify: 'flex-end',
+              align: 'flex-start',
+              color: 'orange',
+              fontSize: '20px'
+            },
+            {
+              string: 'Test2',
+              justify: 'center',
+              align: 'flex-end',
+              color: 'black',
+              fontSize: '14px'
+            }
+          ]
+        }
+      ]
     }
   },
   computed: {
@@ -50,6 +214,19 @@ export default {
     },
     selectedProject () {
       return this.$store.state.selectedProject
+    },
+    gridSize () {
+      return this.columns * this.rows
+    },
+    containerHeight () {
+      const height = Number(this.height.substring(0, this.height.length - 2))
+
+      return `${this.rows * height}px`
+    },
+    containerWidth () {
+      const width = Number(this.width.substring(0, this.width.length - 2))
+
+      return `${this.columns * width}px`
     }
   },
   mounted () {
@@ -58,7 +235,28 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.dragArea {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+li {
+  list-style: none;
+}
+
+.element-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.column {
+  width: 200px;
+  height: 100%;
+  background-color: pink;
+  border: 1px solid black;
+}
+
 button {
   margin: 0 10px;
 }
@@ -78,10 +276,6 @@ button {
   height: 60px;
   padding: 5px 20px;
   background-color: aquamarine;
-}
-
-.grid-wrapper {
-  /* display: grid; */
 }
 
 .grid-item {
@@ -119,9 +313,12 @@ aside {
 }
 
 .main {
+  display: flex;
+  flex-wrap: wrap;
   height: 100%;
   width: 100%;
   padding: 20px;
+  overflow: scroll;
 }
 
 .main-content-wrapper {

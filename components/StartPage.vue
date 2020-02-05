@@ -94,28 +94,6 @@ input {
   font-size: 14px;
 }
 
-button {
-  display: flex;
-  align-self: center;
-  justify-self: center;
-  height: 30px;
-  margin: 10px 0;
-  border-radius: 20px;
-  border: 1px solid green;
-  color: green;
-  font-weight: bold;
-  text-transform: uppercase;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease 0s;
-  cursor: pointer;
-  outline: none;
-
-  &:hover {
-    border: 1px solid orange;
-    color: orange;
-  }
-}
-
 .errors-list-item {
   font-size: 14px;
   background-color: transparent;

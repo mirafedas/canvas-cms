@@ -2,23 +2,36 @@
   <div
     class="editable-wrapper"
     :style="{
-      backgroundImage: `url(${imageURL})`
+      backgroundImage: `url('${item.image}')`,
+      width: width,
+      height: height
     }"
   >
-    Yes
+    <span
+      v-for="el in item"
+      :key="el.string"
+    >
+      {{ el.string }}
+    </span>
+    </span>
   </div>
 </template>
 
 <script>
+
 export default {
   props: {
-    imageURL: {
-      type: String,
-      default: 'https://365psd.com/images/previews/712/abstract-green-background-design-vector-illustration-3752.jpg'
-    },
-    text: {
+    item: {
       type: Array,
       default: () => []
+    },
+    width: {
+      type: String,
+      default: '200px'
+    },
+    height: {
+      type: String,
+      default: '200px'
     }
   }
 }

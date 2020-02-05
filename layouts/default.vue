@@ -69,11 +69,15 @@ button {
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease 0s;
   cursor: pointer;
-  outline: none;
 
   &:hover {
     border: 1px solid orange;
     color: orange;
+  }
+
+  &:active {
+    border: 1px solid orange;
+    box-shadow: inset 1px 1px 10px orange;
   }
 }
 </style>
