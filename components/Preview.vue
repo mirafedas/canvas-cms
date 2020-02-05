@@ -28,16 +28,8 @@ export default {
   mounted () {
     if (!this.selectedProject.elements[0].content) {
       this.selectedProject.elements[0].content = []
-      console.log(this.selectedProject)
+      console.log('this.selectedProject >> ', this.selectedProject)
     }
-  },
-  methods: {
-    // duplicate () {
-    //   this.$store.commit('duplicateProject', this.project.id)
-    // },
-    // edit () {
-    //   this.$store.commit('changeSelectedProject', this.project)
-    // }
   }
 }
 </script>

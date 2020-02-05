@@ -28,28 +28,21 @@
           }"
         >
           <draggable
-            :list="items"
+            :list="gridItems"
             class="dragArea"
-            :options="{handle:'.handle'}"
-          >
-            <li
-              v-for="item in gridItems"
-              :key="item"
-              class="column"
-              :style="{
+            tag="li"
+            style="{
                 width: width,
                 height: height
-              }"
-            >
-              <draggable
-                v-model="gridItems"
-                :list="gridItems"
-                @start="drag=true"
-                @end="drag=false"
-              >
-                <Editable :item="item" />
-              </draggable>
-            </li>
+            }"
+            @start="drag=true"
+            @end="drag=false"
+          >
+            <Editable
+              v-for="item in gridItems"
+              :key="item.image"
+              :item="item"
+            />
           </draggable>
         </ul>
       </div>
@@ -95,7 +88,7 @@ export default {
               string: 'Test2',
               justify: 'center',
               align: 'flex-end',
-              color: 'black',
+              color: 'white',
               fontSize: '14px'
             }
           ]
@@ -103,7 +96,7 @@ export default {
         {
           row: 1,
           column: 1,
-          image: 'https://media.treehugger.com/assets/images/2017/01/cob-house-geodesic-dome-hjertefolgers-10.jpg.860x0_q70_crop-scale.jpg',
+          image: 'https://media-cdn.tripadvisor.com/media/vr-splice-j/07/0b/e9/7c.jpg',
           text: [
             {
               string: 'Test1',
@@ -116,7 +109,7 @@ export default {
               string: 'Test2',
               justify: 'center',
               align: 'flex-end',
-              color: 'black',
+              color: 'white',
               fontSize: '14px'
             }
           ]
@@ -124,7 +117,7 @@ export default {
         {
           row: 1,
           column: 1,
-          image: 'https://media.treehugger.com/assets/images/2017/01/cob-house-geodesic-dome-hjertefolgers-10.jpg.860x0_q70_crop-scale.jpg',
+          image: 'https://upload.wikimedia.org/wikipedia/commons/c/c5/California-dome-house.jpg',
           text: [
             {
               string: 'Test1',
@@ -137,7 +130,7 @@ export default {
               string: 'Test2',
               justify: 'center',
               align: 'flex-end',
-              color: 'black',
+              color: 'white',
               fontSize: '14px'
             }
           ]
@@ -145,7 +138,7 @@ export default {
         {
           row: 1,
           column: 1,
-          image: 'https://media.treehugger.com/assets/images/2017/01/cob-house-geodesic-dome-hjertefolgers-10.jpg.860x0_q70_crop-scale.jpg',
+          image: 'https://i.pinimg.com/originals/44/25/70/4425707aa6feb4e4e26fe7cb6ff8c68e.jpg',
           text: [
             {
               string: 'Test1',
@@ -158,7 +151,7 @@ export default {
               string: 'Test2',
               justify: 'center',
               align: 'flex-end',
-              color: 'black',
+              color: 'white',
               fontSize: '14px'
             }
           ]
@@ -166,7 +159,7 @@ export default {
         {
           row: 1,
           column: 1,
-          image: 'https://media.treehugger.com/assets/images/2017/01/cob-house-geodesic-dome-hjertefolgers-10.jpg.860x0_q70_crop-scale.jpg',
+          image: 'https://eurohouse.ua/images/kupolnie_doma/cam1_post_night-min.jpg',
           text: [
             {
               string: 'Test1',
@@ -179,7 +172,7 @@ export default {
               string: 'Test2',
               justify: 'center',
               align: 'flex-end',
-              color: 'black',
+              color: 'white',
               fontSize: '14px'
             }
           ]
@@ -187,7 +180,7 @@ export default {
         {
           row: 1,
           column: 1,
-          image: 'https://media.treehugger.com/assets/images/2017/01/cob-house-geodesic-dome-hjertefolgers-10.jpg.860x0_q70_crop-scale.jpg',
+          image: 'https://sc01.alicdn.com/kf/HTB12drRau6sK1RjSsrbq6xbDXXal/Outdoor-Glamping-Dome-House-Luxury-Resort-Tent.jpg',
           text: [
             {
               string: 'Test1',
@@ -200,7 +193,7 @@ export default {
               string: 'Test2',
               justify: 'center',
               align: 'flex-end',
-              color: 'black',
+              color: 'white',
               fontSize: '14px'
             }
           ]

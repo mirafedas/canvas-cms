@@ -4,12 +4,18 @@
     :style="{
       backgroundImage: `url('${item.image}')`,
       width: width,
-      height: height
+      height: height,
     }"
   >
     <span
-      v-for="el in item"
+      v-for="el in item.text"
       :key="el.string"
+      :style="{
+        color: el.color,
+        fontSize: el.fontSize,
+        justifySelf: el.justify,
+        alignSelf: el.align
+      }"
     >
       {{ el.string }}
     </span>
@@ -22,8 +28,8 @@
 export default {
   props: {
     item: {
-      type: Array,
-      default: () => []
+      type: Object,
+      default: () => {}
     },
     width: {
       type: String,
@@ -39,6 +45,7 @@ export default {
 
 <style lang="scss" scoped>
 .editable-wrapper {
+  display: flex;
   min-height: 100px;
   min-width: 100px;
   background-size: cover;
