@@ -30,6 +30,11 @@ export const mutations = {
     if (typeof payload === 'object' && payload !== null) {
       state.selectedProject = payload
     }
+  },
+  addProjectElement (state, newElement) {
+    if (typeof newElement.isArray && newElement.length) {
+      state.selectedProject.elements.push(newElement)
+    }
   }
 }
 

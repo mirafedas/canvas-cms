@@ -2,7 +2,6 @@
   <div class="builder-wrapper">
     <div class="nav-top">
       <div class="project-info-wrapper">
-        <button>&#8249; Projects</button>
         <div class="project-info">
           <span>Project name: {{ selectedProject.name }}</span>
           <span>Author: {{ selectedProject.author }}</span>
@@ -17,188 +16,67 @@
     </div>
     <div class="main-content-wrapper">
       <aside>
-        <button>Add section</button>
+        <button @click="addElement()">
+          Add section
+        </button>
       </aside>
       <div class="main">
-        <ul
-          class="element-container"
-          :style="{
-            height: containerHeight,
-            maxWidth: containerWidth
-          }"
-        >
-          <draggable
-            :list="gridItems"
-            class="dragArea"
-            tag="li"
-            style="{
-                width: width,
-                height: height
-            }"
-            @start="drag=true"
-            @end="drag=false"
-          >
-            <Editable
-              v-for="item in gridItems"
-              :key="item.image"
-              :item="item"
-            />
-          </draggable>
-        </ul>
+        <div v-for="element in elements" :key="element.id">
+          <div v-for="item in element" :key="item.id">
+            <div
+              v-if="item.type === 'block'"
+              class="block"
+              :style="{
+                gridRow: item.row,
+                gridColumn: item.column,
+                gridGap: item.gridGap,
+                gridTemplateRows: `repeat(auto-fill, ${item.height})`,
+                gridTemplateColumns: `repeat(auto-fill, ${item.width})`,
+              }"
+            >
+              <draggable
+                v-for="smallElement in item.content"
+                :key="smallElement.row + smallElement.column"
+                :list="item.content"
+                :style="{
+                  width: item.width,
+                  height: item.height
+                }"
+                @start="drag=true"
+                @end="drag=false"
+              >
+                <div
+                  class="block-smallElement"
+                  :style="{
+                    width: item.width,
+                    height: item.height,
+                    gridRow: smallElement.row,
+                    gridColumn: smallElement.column,
+                    backgroundImage: `url('${smallElement.image}')`,
+                  }"
+                />
+              </draggable>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="bottom-board">
-      <div>Banner</div>
-      <div>Slideshow</div>
-      <div>Carousel</div>
-      <div>Other...</div>
     </div>
   </div>
 </template>
 
 <script>
 import draggable from 'vuedraggable'
-import Editable from '../components/Editable'
+import { defaultBlock } from '../config/defaultBlock.js'
+// import Editable from '../components/Editable'
 
 export default {
   components: {
-    Editable,
+    // Editable,
     draggable
   },
   data: () => {
     return {
-      width: '200px',
-      height: '200px',
-      rows: 3,
-      columns: 3,
-      gridItems: [
-        {
-          row: 1,
-          column: 1,
-          image: 'https://media.treehugger.com/assets/images/2017/01/cob-house-geodesic-dome-hjertefolgers-10.jpg.860x0_q70_crop-scale.jpg',
-          text: [
-            {
-              string: 'Test1',
-              justify: 'flex-end',
-              align: 'flex-start',
-              color: 'orange',
-              fontSize: '20px'
-            },
-            {
-              string: 'Test2',
-              justify: 'center',
-              align: 'flex-end',
-              color: 'white',
-              fontSize: '14px'
-            }
-          ]
-        },
-        {
-          row: 1,
-          column: 1,
-          image: 'https://media-cdn.tripadvisor.com/media/vr-splice-j/07/0b/e9/7c.jpg',
-          text: [
-            {
-              string: 'Test1',
-              justify: 'flex-end',
-              align: 'flex-start',
-              color: 'orange',
-              fontSize: '20px'
-            },
-            {
-              string: 'Test2',
-              justify: 'center',
-              align: 'flex-end',
-              color: 'white',
-              fontSize: '14px'
-            }
-          ]
-        },
-        {
-          row: 1,
-          column: 1,
-          image: 'https://upload.wikimedia.org/wikipedia/commons/c/c5/California-dome-house.jpg',
-          text: [
-            {
-              string: 'Test1',
-              justify: 'flex-end',
-              align: 'flex-start',
-              color: 'orange',
-              fontSize: '20px'
-            },
-            {
-              string: 'Test2',
-              justify: 'center',
-              align: 'flex-end',
-              color: 'white',
-              fontSize: '14px'
-            }
-          ]
-        },
-        {
-          row: 1,
-          column: 1,
-          image: 'https://i.pinimg.com/originals/44/25/70/4425707aa6feb4e4e26fe7cb6ff8c68e.jpg',
-          text: [
-            {
-              string: 'Test1',
-              justify: 'flex-end',
-              align: 'flex-start',
-              color: 'orange',
-              fontSize: '20px'
-            },
-            {
-              string: 'Test2',
-              justify: 'center',
-              align: 'flex-end',
-              color: 'white',
-              fontSize: '14px'
-            }
-          ]
-        },
-        {
-          row: 1,
-          column: 1,
-          image: 'https://eurohouse.ua/images/kupolnie_doma/cam1_post_night-min.jpg',
-          text: [
-            {
-              string: 'Test1',
-              justify: 'flex-end',
-              align: 'flex-start',
-              color: 'orange',
-              fontSize: '20px'
-            },
-            {
-              string: 'Test2',
-              justify: 'center',
-              align: 'flex-end',
-              color: 'white',
-              fontSize: '14px'
-            }
-          ]
-        },
-        {
-          row: 1,
-          column: 1,
-          image: 'https://sc01.alicdn.com/kf/HTB12drRau6sK1RjSsrbq6xbDXXal/Outdoor-Glamping-Dome-House-Luxury-Resort-Tent.jpg',
-          text: [
-            {
-              string: 'Test1',
-              justify: 'flex-end',
-              align: 'flex-start',
-              color: 'orange',
-              fontSize: '20px'
-            },
-            {
-              string: 'Test2',
-              justify: 'center',
-              align: 'flex-end',
-              color: 'white',
-              fontSize: '14px'
-            }
-          ]
-        }
-      ]
+      defaultBlock
     }
   },
   computed: {
@@ -223,12 +101,28 @@ export default {
     }
   },
   mounted () {
-    console.log(this.$store.state.selectedProject.elements)
+    console.log('selectedProject >> ', this.$store.state.selectedProject)
+  },
+  methods: {
+    addElement () {
+      console.log(this.$store.state.selectedProject.id)
+      this.$store.commit('addProjectElement', this.defaultBlock)
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.block {
+  display: grid;
+
+}
+
+.block-smallElement {
+  background-size: cover;
+  background-repeat: none;
+}
+
 .dragArea {
   display: flex;
   flex-wrap: wrap;
@@ -306,8 +200,9 @@ aside {
 }
 
 .main {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-rows: repeat(auto-fill, 300px);
+  grid-template-columns: repeat(auto-fill, 300px);
   height: 100%;
   width: 100%;
   padding: 20px;

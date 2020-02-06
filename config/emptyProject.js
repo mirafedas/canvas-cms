@@ -1,12 +1,12 @@
-export const testSelectedProject = {
-  id: '365674',
-  name: 'selectedProject',
-  description: 'The word "raccoon" was adopted into English from the native Powhatan term, as used in the Colony of Virginia. It was recorded on John Smith\'s list of Powhatan words as aroughcun, and on that of William Strachey as arathkone. It has also been identified as a reflex of a Proto-Algonquian root *ahrah-koon-em, meaning "[the] one who rubs, scrubs and scratches with its hands".',
+export const emptyProject = {
+  id: `${Date.now()}`,
+  name: 'Project name',
+  description: 'Project description',
   author: 'Old Sad Panda',
   elements: [
     [
       {
-        id: '982374983274',
+        id: `${Date.now()}`,
         type: 'block',
         row: '1/3',
         column: '1/5',
@@ -19,7 +19,7 @@ export const testSelectedProject = {
           {
             row: 1,
             column: 1,
-            image: 'https://i.pinimg.com/originals/b6/c3/ab/b6c3ab5c990a528654574329087701cf.jpg',
+            image: '',
             text: [
               {
                 string: 'Test1',
